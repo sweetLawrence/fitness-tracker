@@ -3,7 +3,7 @@
 }
 
 body {
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .App {
@@ -12,7 +12,20 @@ body {
   border-radius: 20px;
   scale: 0.83;
 }
-
+.infowrapper{
+  display: flex;
+  border: 1px solid white;
+  border-radius: 20px;
+  scale: 1;
+  width: 100%;
+}
+.main-page{
+  display: flex;
+  border: 1px solid white;
+  border-radius: 20px;
+  scale: 1;
+  width: 100%;
+}
 /************************************** Sidebar *******************************************/
 .selection,
 .info-feed {

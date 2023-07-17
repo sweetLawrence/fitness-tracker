@@ -52,9 +52,9 @@ const Sidebar = ({ setSelectedExercise, selectedExercise }) => {
         })}
       </ul>
       <div className="plan-workout">
-        {/* <Link to="/infofeed"> */}
+        <Link to="/infofeed">
           <img className='planning' src={planning} alt="" />
-        {/* </Link> */}
+        </Link>
       </div>
 
     </div>
