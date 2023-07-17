@@ -240,6 +240,7 @@ body {
 }
 .infofeed-dash {
   padding-left: 0.9em;
+  padding: 0 50% 0 15%;
 }
 .infofeed-dash .header {
   color: #438efe;
@@ -249,7 +250,7 @@ body {
 /* SetTargetBox */
 .target-box {
   background-color: #ffffff;
-  width: 300px;
+  width: 600px;
   box-shadow: 10px 10px 15px #e6e4e4;
   border-radius: 4px;
   margin-left: 0.5em;
