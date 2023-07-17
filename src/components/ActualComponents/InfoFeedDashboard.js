@@ -106,7 +106,7 @@ const InfoFeedDashboard = ({ selectedExercise }) => {
 
     return (
         <div className="dashboard infofeed-dash">
-            <h3>{exercise}</h3>
+            <h3 className='header'>{exercise}</h3>
             <SetTargetBox onTargetChange={handleTargetChange} />
             <div className="show">
                 {/* {exercise} {targetValue} {achievedValue} */}

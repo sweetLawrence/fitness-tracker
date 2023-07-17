@@ -85,6 +85,34 @@ body {
   border-radius: 20px;
   scale: 0.95;
   transition: all 0.4s;
+  border: .3px solid red;
+  animation: clickme 3s infinite forwards ;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+
+}
+@keyframes clickme {
+  0%{
+    scale: .9;
+    /* border: .5px; */
+  }
+  25%{
+    scale: .95;
+    /* border: 1px; */
+  }
+  50%{
+    scale: .97;
+    border: 4px;
+  }
+  75%{
+    scale: .95;
+    /* border: 1px; */
+  }
+  100%{
+    scale: .9;
+    /* border: .5px; */
+  }
+  
 }
 .planning:hover {
   scale: 1;
@@ -226,15 +254,20 @@ body {
 .infofeed-dash{
   padding-left: .9em;
 }
+.infofeed-dash .header{
+  color: #438efe;
+  font-size: 1.5em;
+  margin-left: 2em;
+
+}
 /* SetTargetBox */
 .target-box {
-  /* border: 1px solid orange; */
   background-color: #ffffff;
   width: 300px;
-  /* height: 318px; */
   box-shadow: 10px 10px 15px #e6e4e4;
   border-radius: 4px;
-  margin: 0.5em;
+  margin-left: 0.5em;
+  margin-top: -1.5em;
   padding: 1.5em;
   display: flex;
   flex-direction: column;
