@@ -8,6 +8,8 @@ const SetTargetBox = ({ onTargetChange }) => {
     const date = new Date();
     const day = date.getDay();
     const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+    const date_ = date.toISOString().slice(0, 10);
+
     const current_day = weekDays[day]
     function handleClick(e) {
         const targetValue = target.current.value;
@@ -19,7 +21,7 @@ const SetTargetBox = ({ onTargetChange }) => {
     }
     return (
         <div className='target-box'>
-            <h3>{current_day}</h3>
+            <h3>{current_day} - {date_}</h3>
 
             <div className=" input-z target-input">
                 <input type="text" ref={target} placeholder='Enter Target' required className='t-input' />
