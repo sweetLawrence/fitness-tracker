@@ -12,14 +12,14 @@ body {
   border-radius: 20px;
   scale: 0.83;
 }
-.infowrapper{
+.infowrapper {
   display: flex;
   border: 1px solid white;
   border-radius: 20px;
   scale: 1;
   width: 100%;
 }
-.main-page{
+.main-page {
   display: flex;
   border: 1px solid white;
   border-radius: 20px;
@@ -85,34 +85,19 @@ body {
   border-radius: 20px;
   scale: 0.95;
   transition: all 0.4s;
-  border: .3px solid red;
-  animation: clickme 3s infinite forwards ;
+  border: 1.5px solid #438efe;
+  animation: clickme .2s infinite forwards;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
-
 }
 @keyframes clickme {
-  0%{
-    scale: .9;
-    /* border: .5px; */
+  0% {
+    scale: 0.99;
   }
-  25%{
-    scale: .95;
-    /* border: 1px; */
+  100% {
+    scale: 1;
   }
-  50%{
-    scale: .97;
-    border: 4px;
-  }
-  75%{
-    scale: .95;
-    /* border: 1px; */
-  }
-  100%{
-    scale: .9;
-    /* border: .5px; */
-  }
-  
+
 }
 .planning:hover {
   scale: 1;
@@ -181,6 +166,7 @@ body {
   flex-direction: column;
   background: #f6f9f2;
 }
+
 .dashboard .upper-part {
   height: 50px;
 }
@@ -200,15 +186,7 @@ body {
   align-items: center;
   justify-content: space-evenly;
 }
-@media screen and (max-width:768px) {
-  .dashboard .box-displays {
-    /* height: 40vh;
-    display: flex; */
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-}
+
 .dashboard .bottom-part {
   height: 60vh;
   display: flex;
@@ -257,17 +235,16 @@ body {
 }
 
 /************************************** INFO-FEED *******************************************/
-.info-feed{
+.info-feed {
   width: 25%;
 }
-.infofeed-dash{
-  padding-left: .9em;
+.infofeed-dash {
+  padding-left: 0.9em;
 }
-.infofeed-dash .header{
+.infofeed-dash .header {
   color: #438efe;
   font-size: 1.5em;
   margin-left: 2em;
-
 }
 /* SetTargetBox */
 .target-box {
@@ -298,9 +275,9 @@ body {
   font-weight: bold;
   outline: none;
   border: none;
-  border-bottom: .3px solid #438efe;
+  border-bottom: 0.3px solid #438efe;
 }
-.target-box h3{
+.target-box h3 {
   font-size: 1.5em;
 }
 .target-box .btn {
@@ -317,12 +294,12 @@ body {
   border: none;
   padding: 0.8em;
   border-radius: 5px;
-  transition: all .5s;
-  scale: .9;
+  transition: all 0.5s;
+  scale: 0.9;
 }
 
-.target-box .btn button:hover{
-   background: #438efe;
-   scale: 1;
-   color: #e6e4e4;
+.target-box .btn button:hover {
+  background: #438efe;
+  scale: 1;
+  color: #e6e4e4;
 }
