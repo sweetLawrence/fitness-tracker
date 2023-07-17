@@ -1,0 +1,194 @@
+{
+  "push-ups": [
+    {
+      "exerciseData": "push-ups",
+      "labels": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "special_label": "Number of Push-ups",
+      "userGain": [
+        3,2,3
+      ],
+      "backgroundColor": "red",
+      "boxRepresentation": {
+        "percentage": "75 push-ups",
+        "target": "Target",
+        "progress": "30%",
+        "remaining": "3 LEFT",
+        "time": "8 Hours",
+        "time_title": "Time taken",
+        "progress_title": "Progress"
+      },
+      "accruedProgress": {
+        "percentage": "60%",
+        "title": "Overall progress"
+      },
+      "id": 1
+    }
+  ],
+  "pull-ups": [
+    {
+      "exerciseData": "push-ups",
+      "labels": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "special_label": "Number of Push-ups",
+      "userGain": [
+        3,2,3
+      ],
+      "backgroundColor": "red",
+      "boxRepresentation": {
+        "percentage": "75 push-ups",
+        "target": "Target",
+        "progress": "30%",
+        "remaining": "3 LEFT",
+        "time": "8 Hours",
+        "time_title": "Time taken",
+        "progress_title": "Progress"
+      },
+      "accruedProgress": {
+        "percentage": "60%",
+        "title": "Overall progress"
+      },
+      "id": 2
+    }
+  ],
+  "squats": [
+    {
+      "exerciseData": "push-ups",
+      "labels": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "special_label": "Number of Push-ups",
+      "userGain": [
+        3,2,3
+      ],
+      "backgroundColor": "red",
+      "boxRepresentation": {
+        "percentage": "75 push-ups",
+        "target": "Target",
+        "progress": "30%",
+        "remaining": "3 LEFT",
+        "time": "8 Hours",
+        "time_title": "Time taken",
+        "progress_title": "Progress"
+      },
+      "accruedProgress": {
+        "percentage": "60%",
+        "title": "Overall progress"
+      },
+      "id": 3
+    }
+  ],
+  "running": [
+    {
+      "exerciseData": "push-ups",
+      "labels": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "special_label": "Number of Push-ups",
+      "userGain": [
+        3,2,3
+      ],
+      "backgroundColor": "red",
+      "boxRepresentation": {
+        "percentage": "75 push-ups",
+        "target": "Target",
+        "progress": "30%",
+        "remaining": "3 LEFT",
+        "time": "8 Hours",
+        "time_title": "Time taken",
+        "progress_title": "Progress"
+      },
+      "accruedProgress": {
+        "percentage": "60%",
+        "title": "Overall progress"
+      },
+      "id": 4
+    }
+  ],
+  "cycling": [
+    {
+      "exerciseData": "push-ups",
+      "labels": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "special_label": "Number of Push-ups",
+      "userGain": [
+        3,2,3
+      ],
+      "backgroundColor": "red",
+      "boxRepresentation": {
+        "percentage": "75 push-ups",
+        "target": "Target",
+        "progress": "30%",
+        "remaining": "3 LEFT",
+        "time": "8 Hours",
+        "time_title": "Time taken",
+        "progress_title": "Progress"
+      },
+      "accruedProgress": {
+        "percentage": "60%",
+        "title": "Overall progress"
+      },
+      "id": 5
+    }
+  ],
+  "swimming": [
+    {
+      "exerciseData": "push-ups",
+      "labels": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "special_label": "Number of Push-ups",
+      "userGain": [
+        3,2,3
+      ],
+      "backgroundColor": "red",
+      "boxRepresentation": {
+        "percentage": "75 push-ups",
+        "target": "Target",
+        "progress": "30%",
+        "remaining": "3 LEFT",
+        "time": "8 Hours",
+        "time_title": "Time taken",
+        "progress_title": "Progress"
+      },
+      "accruedProgress": {
+        "percentage": "60%",
+        "title": "Overall progress"
+      },
+      "id": 6
+    }
+  ]
+}
