@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import 'animate.css';
 import InfoWrapper from './components/ActualComponents/InfoWrapper';
 import MainPage from './components/ActualComponents/MainPage';
+import Signup from './components/AuthenticationFolder/Signup';
+import Login from './components/AuthenticationFolder/Login';
 
 function App() {
   return (
@@ -13,8 +15,11 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/infofeed" element={<InfoWrapper />} />
         </Routes>
+
+        {/* <Signup /> */}
+        {/* <Login /> */}
       </div>
-    </Router>
+   </Router>
   );
 }
 

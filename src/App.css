@@ -86,7 +86,7 @@ body {
   scale: 0.95;
   transition: all 0.4s;
   border: 1.5px solid #438efe;
-  animation: clickme .2s infinite forwards;
+  animation: clickme 0.2s infinite forwards;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
 }
@@ -97,7 +97,6 @@ body {
   100% {
     scale: 1;
   }
-
 }
 .planning:hover {
   scale: 1;
@@ -248,7 +247,7 @@ body {
   margin-left: 2em;
 }
 /* SetTargetBox */
-.target-box {
+.target-box{
   background-color: #ffffff;
   width: 600px;
   box-shadow: 10px 10px 15px #e6e4e4;
@@ -303,4 +302,17 @@ body {
   background: #438efe;
   scale: 1;
   color: #e6e4e4;
+}
+
+/************************************** SIGNUP-LOGIN *******************************************/
+
+.login-signup{
+  width: 500px;
+}
+
+.login-signup .input-z {
+  width: 80%;
+}
+.login-signup input {
+  width: 100%;
 }
