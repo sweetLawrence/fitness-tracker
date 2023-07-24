@@ -4,13 +4,20 @@
 
 body {
   overflow: hidden;
+  /* background: red; */
 }
 
 .App {
   display: flex;
+  flex-direction: column;
   border: 1px solid white;
-  border-radius: 20px;
-  scale: 0.83;
+  margin-top: -70px;
+  /* border-radius: 20px; */
+  overflow: hidden;
+  scale: 0.75;
+  height: 750px;
+  box-shadow: 10px 10px 15px #e6e4e4;
+  /* border: 1px solid #6ec51e; */
 }
 .infowrapper {
   display: flex;
@@ -26,6 +33,113 @@ body {
   scale: 1;
   width: 100%;
 }
+/************************************** Homepage *******************************************/
+.homepage {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 2px solid red; */
+}
+.homepage .div1 {
+  height: 100%;
+  /* border: 2px solid #438efe; */
+  width: 50%;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  font-size: 4em;
+  font-weight: 640;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.homepage .div1 span{
+  color: #6ec51e;
+
+}
+.homepage .div2 {
+  display: flex;
+  flex-direction: column;
+}
+.homepage .div2 .select-login-type {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+.homepage .div2 .select-login-type button {
+  outline: none;
+  font-weight: 700;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1.2em;
+  width: 40%;
+  background: #438efe;
+  color: white;
+  border: none;
+  padding: 0.8em;
+  border-radius: 5px;
+  transition: all 0.5s;
+  scale: 0.9;
+}
+.homepage .div2 .select-login-type button:hover {
+  scale: 1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  /* border:2px solid #438efe; */
+  width: 100%;
+  /* background: #f6f9f2; */
+  border-bottom: 5px solid #f6f9f2;
+  margin-bottom: 20px;
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .row {
+  display: flex;
+  margin-right: 1.2em;
+  font-size: 1.3em;
+  width: 120px;
+  padding: 0.6em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  text-align: center;
+  border-radius: 10px;
+  border-bottom: 2px solid #438efe;
+  scale: 0.9;
+  transition: all 0.4s;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.navbar .active > li {
+  border-bottom: 5px solid #fa497c;
+}
+
+.navbar .analytics {
+  text-decoration: none;
+  color: black;
+}
+.navbar .row:hover {
+  scale: 1;
+  cursor: pointer;
+  border-bottom: 2px solid #fa497c;
+}
+.navbar .logo {
+  width: 130px;
+  border-radius: 50%;
+  /* box-shadow: .5px 0px 9px #438efe; */
+}
+
 /************************************** Sidebar *******************************************/
 .selection,
 .info-feed {
@@ -247,7 +361,7 @@ body {
   margin-left: 2em;
 }
 /* SetTargetBox */
-.target-box{
+.target-box {
   background-color: #ffffff;
   width: 600px;
   box-shadow: 10px 10px 15px #e6e4e4;
@@ -306,8 +420,13 @@ body {
 
 /************************************** SIGNUP-LOGIN *******************************************/
 
-.login-signup{
+.login-signup {
   width: 500px;
+  scale: 0.9;
+  height: 480px;
+  border: 1px solid #438efe;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px #e6e4e4;
 }
 
 .login-signup .input-z {
@@ -315,4 +434,5 @@ body {
 }
 .login-signup input {
   width: 100%;
+  /* height: 60px; */
 }
