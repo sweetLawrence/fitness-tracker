@@ -12,7 +12,7 @@ const HomePage = () => {
         setButtonState("login")
     }
     return (
-        <div className='homepage'>
+        <div className='homepage animate__animated animate__fadeInUp'>
             <div className="div1">
                 Welcome to <span>FitrApp</span>
             </div>
