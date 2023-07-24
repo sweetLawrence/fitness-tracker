@@ -30,7 +30,7 @@ const Sidebar = ({ setSelectedExercise, selectedExercise }) => {
   return (
     <div className='selection'>
 
-      <h3>Lawrence Fitness Tracker</h3>
+      <h3>John Doe </h3>
       <ul className="nav-li">
         {SidebarData.map((data, index) => {
           const IconComponent = iconMap[icons[index]];
