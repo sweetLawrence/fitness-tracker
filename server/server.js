@@ -6,18 +6,20 @@ const cors = require("cors");
 
 const usersRouter = require("./routes/Users");
 const inputsRouter = require("./routes/Inputs");
-const exRouter = require("./routes/Exercises");
+// const exRouter = require("./routes/Exercises");
+const insertPredefinedExercises = require("./routes/Exercises");
 
 
 app.use(express.json())
 app.use(cors());
 
-app.use("/auth",usersRouter);
-app.use("/insert",inputsRouter);
-app.use("/ex",exRouter);
+app.use("/auth", usersRouter);
+app.use("/insert", inputsRouter);
+// app.use("/ex", exRouter);
 
-db.sequelize.sync().then(() => {
-    app.listen(PORT, () => {
+db.sequelize.sync().then(async () => {
+    await insertPredefinedExercises();
+    app.listen(PORT, async () => {
         console.log("Server is online");
     })
 })

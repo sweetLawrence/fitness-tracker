@@ -4,14 +4,17 @@ const { Exercises} = require("../models");
 
 
 
-router.post('/', async (req, res) => {
+const insertPredefinedExercises = async () => {
+    const predefinedExercises = [
+        { name: "push-ups" },
+        { name: "pull-ups" },
+        { name: "squats" },
+        { name: "running" },
+        { name: "cycling" },
+        { name: "swimming" },
+    ];
 
-    const input = req.body;
-    await Exercises.create(input);
-    res.json(input);
+    await Exercises.bulkCreate(predefinedExercises);
+};
 
-})
-
-
-
-module.exports = router
+module.exports = insertPredefinedExercises;
