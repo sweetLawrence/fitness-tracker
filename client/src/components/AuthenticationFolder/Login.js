@@ -13,8 +13,8 @@ const Login = () => {
 
     function handleSubmit() {
         // e.preventDefault()
-        setName("");
-        setPassword("");
+        //setName(""); // this could spell disaster if by chance setState updates immediately rather clear after sending
+        //setPassword("");
 
         const data = {
             username: name,
@@ -31,7 +31,9 @@ const Login = () => {
                 localStorage.setItem("accessToken", response.data);
                 // console.log(response.data)
                 console.log("Login successful. Access token:", response.data);
-
+                // clear up now
+                setName(""); 
+                setPassword("");
                 setAuthState(true)
                 navigate("/analytics");
             };
@@ -41,37 +43,38 @@ const Login = () => {
 
     }
     return (
-        <div className='login-signup target-box'>
-
-            <h3>Login</h3>
-            <div className="input-z achieved">
-                <input type="text"
-                    placeholder='Enter username'
-                    required className='t-achieved'
-                    value={name}
-                    onChange={(e) => (
-                        setName(e.target.value)
-                    )}
-                />
+        <div className={"home-l animate__animated animate__fadeIn"}>
+            <div className='login-signup target-box'>
+                <h3>Login</h3>
+                <div className="input-z achieved">
+                    <input type="text"
+                        placeholder='Enter username'
+                        required className='t-achieved'
+                        value={name}
+                        onChange={(e) => (
+                            setName(e.target.value)
+                        )}
+                    />
+                </div>
+                <div className="input-z time-taken">
+                    <input type="password"
+                        placeholder='Enter Password'
+                        required className='t-time-taken'
+                        value={password}
+                        onChange={(e) => (
+                            setPassword(e.target.value)
+                        )}
+                    />
+                </div>
+                <div className="btn">
+    
+                    <button type='submit'
+                        onClick={handleSubmit}
+                    >Login</button>
+    
+                </div>
+    
             </div>
-            <div className="input-z time-taken">
-                <input type="password"
-                    placeholder='Enter Password'
-                    required className='t-time-taken'
-                    value={password}
-                    onChange={(e) => (
-                        setPassword(e.target.value)
-                    )}
-                />
-            </div>
-            <div className="btn">
-
-                <button type='submit'
-                    onClick={handleSubmit}
-                >Login</button>
-
-            </div>
-
         </div>
     )
 }
