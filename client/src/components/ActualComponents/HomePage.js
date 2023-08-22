@@ -26,18 +26,22 @@ const HomePage = () => {
                         <button onClick={handleSignup}>Signup</button>
                         <button onClick={handleLogin}>Login</button>
                     </div>
-                    {(buttonState == "signup") && (
-                        <div className='home-s animate__animated animate__fadeIn'>
-                            <Signup />
-                        </div>
+                    { 
+                        buttonState === "signup ? <Signup /> : <Login />
+                    }
+                    {**// consider this approeach and apply the style to each Signup & Login as they are similar
+                        {(buttonState == "signup") && (
+                    //     <div className='home-s animate__animated animate__fadeIn'>
+                    //         <Signup />
+                    //     </div>
 
-                    )}
-                    {(buttonState == "login") && (
-                        <div className='home-l animate__animated animate__fadeIn'>
-                            <Login />
-                        </div>
+                    // )}
+                    // {(buttonState == "login") && (
+                    //     <div className='home-l animate__animated animate__fadeIn'>
+                    //         <Login />
+                    //     </div>
 
-                    )}
+                    // )}*}
 
                 </div>
             </div>
