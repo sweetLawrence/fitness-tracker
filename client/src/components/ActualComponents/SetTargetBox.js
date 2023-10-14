@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
 
-const SetTargetBox = ({ onTargetChange, exerciseId}) => {
+const SetTargetBox = ({ onTargetChange, exerciseId }) => {
     const navigate = useNavigate()
     const target = useRef()
     const achieved = useRef()
@@ -19,17 +19,33 @@ const SetTargetBox = ({ onTargetChange, exerciseId}) => {
         const achievedValue = Number(achieved.current.value);
         const timeValue = Number(timeTaken.current.value);
 
+        // Create a new Date object
+        const date = new Date();
+
+        // Get the year, month, and day from the date
+        const year = date.getFullYear();
+        // JavaScript months are 0-based, so add 1 to get the correct month
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+
+        // Format the date as "YYYY-MM-DD"
+        const formattedDate = `${year}-${month}-${day}`;
+
+        // console.log(formattedDate); // Output: "2023-01-02"
+
+
         const inputsData = {
-            target:targetValue,
-            achieved:achievedValue,
-            timeTaken:timeValue,
-            exerciseId:exerciseId,
-            dayOfWeek:current_day,
-      
+            target: targetValue,
+            achieved: achievedValue,
+            timeTaken: timeValue,
+            exerciseId: exerciseId,
+            dayOfWeek: current_day,
+            date:formattedDate,
+
         }
 
         console.log("Sending data to the server:", inputsData);
-        axios.post(`http://localhost:3001/insert`, { inputsData},
+        axios.post(`http://localhost:3001/insert`, { inputsData },
             {
                 headers: {
                     accessToken: localStorage.getItem("accessToken")
@@ -47,7 +63,7 @@ const SetTargetBox = ({ onTargetChange, exerciseId}) => {
 
         // axios post end
 
-        onTargetChange(targetValue, achievedValue,timeTaken);
+        onTargetChange(targetValue, achievedValue, timeTaken);
         target.current.value = '';
         achieved.current.value = '';
         timeTaken.current.value = '';
@@ -74,7 +90,7 @@ const SetTargetBox = ({ onTargetChange, exerciseId}) => {
                 <button type='submit' onClick={() => {
                     if (target.current.value !== "" && achieved.current.value !== "") {
                         handleClick()
-                        
+
                     }
                 }}>Submit</button>
 
