@@ -277,7 +277,7 @@ const Dashboard2 = ({ selectedExercise, setSelectedExercise, isMobileView, handl
     const achieved_value = Math.floor(Math.random() * 100);
     const remaining_value = Math.floor(Math.random() * 100);
  
-    const percentageProgress = Math.floor(target_value/achieved_value)*10;
+    const percentageProgress = Math.floor(Math.random() * 100);
 
     const userData = {
         labels,
