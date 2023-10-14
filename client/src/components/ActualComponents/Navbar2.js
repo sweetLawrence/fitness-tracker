@@ -44,7 +44,13 @@ const Navbar2 = () => {
               <li className="row">Summaryzz</li>
             </Link> */}
 
-            
+                        <Link
+
+                            className={`analytics ${location.pathname === '/summary' ? 'active' : ''}`}
+                            to="/summary"
+                        >
+                            <li className="row">Summary</li>
+                        </Link>
 
                         <Link
                             onClick={handleLogout}
@@ -65,7 +71,7 @@ const Navbar2 = () => {
                             <li className="row">Analytics</li>
                         </Link>
 
-            
+
 
                         <Link
                             onClick={handleLogout}
@@ -73,6 +79,14 @@ const Navbar2 = () => {
                             to="/"
                         >
                             <li className="row">Logout</li>
+                        </Link>
+
+                        <Link
+
+                            className={`analytics ${location.pathname === '/summary' ? 'active' : ''}`}
+                            to="/summary"
+                        >
+                            <li className="row">Summary</li>
                         </Link>
 
 
@@ -98,16 +112,22 @@ const Navbar2 = () => {
                             <div className="d">
                                 <ul>
                                     {/* <span>X</span> */}
-                                   
+
                                     <Link to="/analytics">
                                         <li className="row">Analytics</li>
                                     </Link>
-                                    
+
                                     <Link
                                         onClick={handleLogout}
                                         to="/"
                                     >
                                         <li className="row">Logout</li>
+                                    </Link>
+                                    <Link
+                                        className={`analytics`}
+                                        to="/summary"
+                                    >
+                                        <li className="row">Summary</li>
                                     </Link>
 
                                     {/*                                   
