@@ -112,12 +112,12 @@
 //         </div>
 
 //       <div className="upper-part">
-       
+
 //         <h2>
 //           <span className="pre-title">Exercise: </span>
 //           {exercise}
 //         </h2>
-      
+
 //       </div>
 //       <div className="box-displays">
 //         <BoxRepresentation
@@ -157,7 +157,7 @@
 //           />
 //         </div>
 //       </div>
-    
+
 //     </div>
 
 //   );
@@ -371,20 +371,25 @@ function getDatesForCurrentWeek() {
 const Dashboard = ({ selectedExercise, setSelectedExercise, isMobileView, handleToggleSidebar }) => {
   const exercise = SidebarData[selectedExercise];
   const exerciseData = UserData.find((data) => data.exercise === exercise);
+  const [data, setData] = useState([
+    // Your initial data array
+  ]);
 
-  const [userData, setUserData] = useState({
-    labels: [],
-    datasets: [
-      {
-        label: 'Users gained',
-        data: [],
-        backgroundColor: [],
-        tension: 0.4,
-      },
-    ],
-  });
+  const [transformedData, setTransformedData] = useState([]);
 
-  const [inputData, setInputData] = useState([]);
+  // const [userData, setUserData] = useState({
+  //   labels: [],
+  //   datasets: [
+  //     {
+  //       label: 'Users gained',
+  //       data: [],
+  //       backgroundColor: [],
+  //       tension: 0.4,
+  //     },
+  //   ],
+  // });
+
+  const [bmi, setBmi] = useState(0);
   useEffect(() => {
     const fetchInputData = async () => {
       try {
@@ -393,67 +398,246 @@ const Dashboard = ({ selectedExercise, setSelectedExercise, isMobileView, handle
             'accessToken': localStorage.getItem("accessToken"),
           },
         });
-        console.log(response.data);
-        setInputData(response.data);
+        // console.log("RD",response.data);
+        // setData(response.data)
+
+
+
+
+
+        // .................
+        function mergeObjectsWithSameExerciseIdAndDay(arr) {
+          const resultMap = new Map();
+
+          // Iterate through the array
+          arr.forEach(obj => {
+            const { exerciseId, target, timeTaken, achieved, dayOfWeek } = obj;
+
+            // Create a unique key based on exerciseId and dayOfWeek
+            const key = `${exerciseId}-${dayOfWeek}`;
+
+            // Check if the key is already present in the map
+            if (resultMap.has(key)) {
+              // If present, accumulate target, timeTaken, and achieved values
+              resultMap.set(key, {
+                ...resultMap.get(key),
+                target: resultMap.get(key).target + target,
+                timeTaken: resultMap.get(key).timeTaken + timeTaken,
+                achieved: resultMap.get(key).achieved + achieved,
+              });
+            } else {
+              // If not present, add a new entry to the map
+              resultMap.set(key, { ...obj });
+            }
+          });
+
+          // Convert the map values back to an array
+          const resultArray = Array.from(resultMap.values());
+
+          return resultArray;
+        }
+      
+        
+        // Example usage:
+        const inputArray = [
+          {
+            achieved: 10,
+            createdAt: "2023-12-02T17:35:14.000Z",
+            date: "2023-12-02T00:00:00.000Z",
+            dayOfWeek: "Wednesday",
+            exerciseId: 1,
+            id: 1,
+            month: "December",
+            target: 10,
+            timeTaken: 2,
+            updatedAt: "2023-12-02T17:35:14.000Z",
+            userId: 1,
+          },
+          // Add more objects as needed
+        ];
+
+        const mergedArray = mergeObjectsWithSameExerciseIdAndDay(response.data);
+        // console.log("MA", mergedArray);
+
+
+        // ..........................
+        const lastEntry = response.data[response.data.length - 1];
+        if (lastEntry) {
+          const _bmi=(lastEntry.weight)/(Math.pow(lastEntry.height,2))
+          setBmi(_bmi)
+        }
+
+        setTransformedData(response.data);
       } catch (error) {
         console.error('Error fetching input data:', error);
       }
     };
 
     fetchInputData();
-  }, []);
+  }, [selectedExercise]);
 
-  const dayIndices = {
-    Sunday: 0,
-    Monday: 1,
-    Tuesday: 2,
-    Wednesday: 3,
-    Thursday: 4,
-    Friday: 5,
-    Saturday: 6,
-  };
+  console.log("xxx", transformedData)
+  // const dayIndices = {
+  //   Sunday: 0,
+  //   Monday: 1,
+  //   Tuesday: 2,
+  //   Wednesday: 3,
+  //   Thursday: 4,
+  //   Friday: 5,
+  //   Saturday: 6,
+  // };
 
-  const sortedInputData = inputData.slice().sort((a, b) => dayIndices[b.dayOfWeek] - dayIndices[a.dayOfWeek]);
+  // const sortedInputData = inputData.slice().sort((a, b) => dayIndices[b.dayOfWeek] - dayIndices[a.dayOfWeek]);
 
-  console.log("Here", sortedInputData);
-  console.log("Here22", inputData);
+  // // console.log("Here", sortedInputData);
+  // // console.log("Here22", inputData);
 
-  let selectedExerciseData;
-  if (Array.isArray(sortedInputData) && sortedInputData.length > 0) {
-    selectedExerciseData = sortedInputData.find((data) => data.exerciseId === selectedExercise + 1);
+  // let selectedExerciseData;
+  // if (Array.isArray(transformedData) && transformedData.length > 0) {
+  //   selectedExerciseData = transformedData.find((data) => data.exerciseId === selectedExercise + 1);
+  // } else {
+  //   selectedExerciseData = null;
+  // }
+
+  // Get the current day of the week
+  const currentDayOfWeek = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+
+  // Find the selected exercise data for the current day
+  let selectedExerciseDataForCurrentDay;
+  if (Array.isArray(transformedData) && transformedData.length > 0) {
+    selectedExerciseDataForCurrentDay = transformedData
+      .filter((data) => data.dayOfWeek === currentDayOfWeek && data.exerciseId === selectedExercise + 1)
+      .pop(); // Use pop() to get the last object of the filtered array
   } else {
-    selectedExerciseData = null;
+    selectedExerciseDataForCurrentDay = null;
   }
 
-  const target_value = selectedExerciseData ? selectedExerciseData.target : 0;
-  const time_value = selectedExerciseData ? selectedExerciseData.timeTaken : 0;
-  const achieved_value = selectedExerciseData ? selectedExerciseData.achieved : 0;
-  const remaining_value = selectedExerciseData ? (selectedExerciseData.target - selectedExerciseData.achieved) : 0;
-  const percentageProgress = selectedExerciseData ? Math.floor(((selectedExerciseData.achieved / selectedExerciseData.target) * 100)) : 0;
+  // Use the selectedExerciseDataForCurrentDay for display
+  const target_value = selectedExerciseDataForCurrentDay ? selectedExerciseDataForCurrentDay.target : 0;
+  const time_value = selectedExerciseDataForCurrentDay ? selectedExerciseDataForCurrentDay.timeTaken : 0;
+  const achieved_value = selectedExerciseDataForCurrentDay ? selectedExerciseDataForCurrentDay.achieved : 0;
+  const remaining_value = selectedExerciseDataForCurrentDay ? (selectedExerciseDataForCurrentDay.target - selectedExerciseDataForCurrentDay.achieved) : 0;
+  const percentageProgress = selectedExerciseDataForCurrentDay ? Math.floor(((selectedExerciseDataForCurrentDay.achieved / selectedExerciseDataForCurrentDay.target) * 100)) : 0;
 
-  // Get the dates for the current week
-  const datesForWeek = getDatesForCurrentWeek();
 
-  // Map the achieved values to the days of the week
-  const achievedValuesForWeek = datesForWeek.map((day) => {
-    const dayData = sortedInputData.find((data) => data.dayOfWeek === day.dayOfWeek && data.exerciseId === selectedExercise + 1);
-    return dayData ? dayData.achieved : 0;
+  // const target_value = selectedExerciseData ? selectedExerciseData.target : 0;
+  // const time_value = selectedExerciseData ? selectedExerciseData.timeTaken : 0;
+  // const achieved_value = selectedExerciseData ? selectedExerciseData.achieved : 0;
+  // const remaining_value = selectedExerciseData ? (selectedExerciseData.target - selectedExerciseData.achieved) : 0;
+  // const percentageProgress = selectedExerciseData ? Math.floor(((selectedExerciseData.achieved / selectedExerciseData.target) * 100)) : 0;
+
+  // // Get the dates for the current week
+  // const datesForWeek = getDatesForCurrentWeek();
+
+  // // Map the achieved values to the days of the week
+  // const achievedValuesForWeek = datesForWeek.map((day) => {
+  //   const dayData = sortedInputData.find((data) => data.dayOfWeek === day.dayOfWeek && data.exerciseId === selectedExercise + 1);
+  //   return dayData ? dayData.achieved : 0;
+  // });
+
+  // // Update the chart data for the current week
+  // useEffect(() => {
+  //   setUserData({
+  //     labels: datesForWeek.map((day) => day.dayOfWeek), // Days of the week
+  //     datasets: [
+  //       {
+  //         label: "Achieved",
+  //         data: achievedValuesForWeek,
+  //         backgroundColor: exerciseData.backgroundColor,
+  //         tension: 0.4,
+  //       },
+  //     ],
+  //   });
+  // }, [exercise, inputData, achievedValuesForWeek]);
+
+
+
+  // const mapDataToDays = () => {
+  //   const daysArray = UserData[selectedExercise].labels;
+  //   const achievedArray = daysArray.map((day) => {
+  //     const dayData = transformedData.find((data) => data.dayOfWeek === day && data.exerciseId === selectedExercise + 1);
+  //     return dayData ? dayData.achieved : 0;
+  //   });
+  //   return achievedArray;
+  // };
+
+
+  // const mapDataToDays = () => {
+  //   const daysArray = UserData[selectedExercise].labels;
+  //   const achievedArray = daysArray.map((day, index) => {
+  //     const dayData = transformedData.find((data) => data.dayOfWeek === day && data.exerciseId === selectedExercise + 1);
+  //     // const dayData = transformedData
+  //     return dayData ? dayData.achieved : 0;
+  //   });
+
+
+  const mapDataToDays = () => {
+    const daysArray = UserData[selectedExercise].labels;
+
+    const lastValuesByDay = daysArray.map((day) => {
+      // Filter the transformedData array to get entries for the current day
+      const entriesForDay = transformedData.filter((data) => data.dayOfWeek === day && data.exerciseId === selectedExercise + 1);
+
+      // If there are entries for the current day, return the achieved value from the last entry
+      if (entriesForDay.length > 0) {
+        return entriesForDay[entriesForDay.length - 1].achieved;
+      }
+
+      // If there are no entries for the current day, return 0
+      return 0;
+    });
+
+    return lastValuesByDay;
+  };
+
+
+  // transformedData
+  // .filter((data) => data.dayOfWeek === currentDayOfWeek && data.exerciseId === selectedExercise + 1)
+  // .pop();
+
+  // Find the index where a new week starts
+  //   const startIndex = achievedArray.findIndex((value, index, array) => {
+  //     if (index > 0) {
+  //       const currentDay = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+  //       const previousDay = daysArray[(index - 1) % daysArray.length];
+  //       return currentDay === 'Sunday' && previousDay === 'Saturday';
+  //     }
+  //     return false;
+  //   });
+
+  //   // If a new week is found, adjust the achievedArray
+  //   if (startIndex !== -1) {
+  //     const slicedArray = achievedArray.slice(startIndex).concat(achievedArray.slice(0, startIndex));
+  //     return slicedArray;
+  //   }
+
+  //   return achievedArray;
+  // };
+
+  const [userData, setUserData] = useState({
+    labels: UserData[selectedExercise].labels,
+    datasets: [
+      {
+        label: exerciseData.special_label,
+        data: mapDataToDays(),
+        backgroundColor: exerciseData.backgroundColor,
+        tension: 0.4,
+      },
+    ],
   });
-
-  // Update the chart data for the current week
   useEffect(() => {
     setUserData({
-      labels: datesForWeek.map((day) => day.dayOfWeek), // Days of the week
+      labels: UserData[selectedExercise].labels,
       datasets: [
         {
-          label: "Achieved",
-          data: achievedValuesForWeek,
+          label: exerciseData.special_label,
+          data: mapDataToDays(),
           backgroundColor: exerciseData.backgroundColor,
           tension: 0.4,
         },
       ],
     });
-  }, [exercise, inputData, achievedValuesForWeek]);
+  }, [selectedExercise, transformedData]);
 
   return (
     <div className="dashboard">
@@ -466,6 +650,9 @@ const Dashboard = ({ selectedExercise, setSelectedExercise, isMobileView, handle
         <h2>
           <span className="pre-title">Exercise: </span>
           {exercise}
+          {","}
+          {/* <br /> */}
+          <span className='bmi'>BMI:{bmi}</span>
         </h2>
 
       </div>

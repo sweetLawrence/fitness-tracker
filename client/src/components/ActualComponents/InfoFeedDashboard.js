@@ -107,7 +107,7 @@ const InfoFeedDashboard = ({ selectedExercise ,isMobileView, handleToggleSidebar
     };
 
     return (
-        <div className="dashboard infofeed-dash">
+        <div className="">
             <div className="exercises-display" onClick={handleToggleSidebar}>
                 More Exercises
             </div>

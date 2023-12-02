@@ -534,18 +534,19 @@ body {
 /* SetTargetBox */
 .target-box {
   background-color: #ffffff;
-  width: 40%;
+  width: 150%;
   box-shadow: 10px 10px 15px #e6e4e4;
   border-radius: 4px;
   margin-left: 0.5em;
-  /* margin-top: -1.5em; */
-  padding: 1.5em;
+  margin-top: -2em;
+  padding: 1.5em 2em .5em 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* scale: 0.95; */
+  scale: 0.8;
   transition: all 0.6s;
+  padding-top: 0;
 }
 .target-box .input-z {
   height: 70px;
@@ -621,6 +622,7 @@ body {
   }
   .homepage .div2 {
     width: 100%;
+    /* color: #6ec51e; */
   }
   .homepage .div2 .select-login-type {
     margin-bottom: 3em;
@@ -720,4 +722,48 @@ body {
     width: 100%;
     overflow-x: hidden;
   }
+}
+
+
+
+
+
+
+/* table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #DDD;
+}
+
+tr:hover {background-color: #D6EEEE;}
+
+.table{
+  /* background-color: red; */
+  height: 35vh;
+  overflow: auto;
+}
+
+.line-graph-2{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  max-height: 35vh;
+  width: 70%;
+  padding-bottom: 1.5em;
+  /* background: red; */
+  /* left: 0; */
+}
+
+.bmi{
+  margin-left: .8em;
+  color: red;
+  font-size: .8em;
 }

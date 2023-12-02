@@ -18,6 +18,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         date:{
             type: DataTypes.DATE,
+        },
+        month:{
+            type: DataTypes.STRING,
+        },
+        weight:{
+            type: DataTypes.INTEGER,
+        },
+        height:{
+            type: DataTypes.INTEGER,
         }
     });
    

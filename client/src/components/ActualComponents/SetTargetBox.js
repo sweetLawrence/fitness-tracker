@@ -4,20 +4,27 @@ import { useNavigate } from 'react-router-dom'
 
 const SetTargetBox = ({ onTargetChange, exerciseId }) => {
     const navigate = useNavigate()
+
     const target = useRef()
     const achieved = useRef()
     const timeTaken = useRef()
+    const weight = useRef()
+    const height = useRef()
 
     const date = new Date();
     const day = date.getDay();
     const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     const date_ = date.toISOString().slice(0, 10);
+    // const month = date.getMonth();
 
     const current_day = weekDays[day]
     function handleClick(e) {
         const targetValue = Number(target.current.value);
         const achievedValue = Number(achieved.current.value);
         const timeValue = Number(timeTaken.current.value);
+        const weightValue = Number(weight.current.value);
+        const heightValue = Number(height.current.value);
+
 
         // Create a new Date object
         const date = new Date();
@@ -30,9 +37,8 @@ const SetTargetBox = ({ onTargetChange, exerciseId }) => {
 
         // Format the date as "YYYY-MM-DD"
         const formattedDate = `${year}-${month}-${day}`;
-
-        // console.log(formattedDate); // Output: "2023-01-02"
-
+        const currentDate = new Date();
+        const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
 
         const inputsData = {
             target: targetValue,
@@ -40,7 +46,10 @@ const SetTargetBox = ({ onTargetChange, exerciseId }) => {
             timeTaken: timeValue,
             exerciseId: exerciseId,
             dayOfWeek: current_day,
-            date:formattedDate,
+            date: formattedDate,
+            month:currentMonth,
+            weight:weightValue,
+            height:heightValue
 
         }
 
@@ -67,6 +76,8 @@ const SetTargetBox = ({ onTargetChange, exerciseId }) => {
         target.current.value = '';
         achieved.current.value = '';
         timeTaken.current.value = '';
+        weight.current.value = '';
+        height.current.value = '';
 
         navigate("/analytics")
 
@@ -84,6 +95,12 @@ const SetTargetBox = ({ onTargetChange, exerciseId }) => {
             </div>
             <div className="input-z time-taken">
                 <input type="number" ref={timeTaken} placeholder='Enter Time Taken' required className='t-time-taken' />
+            </div>
+            <div className="input-z time-taken">
+                <input type="number" ref={weight} placeholder='Enter Current Weight (kg)' required className='t-time-taken' />
+            </div>
+            <div className="input-z time-taken">
+                <input type="number" ref={height} placeholder='Enter Current Height (Metres)' required className='t-time-taken' />
             </div>
             <div className="btn">
 
